@@ -1,0 +1,78 @@
+.navBar{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 10vh;
+    border-radius: 0px 0px 8px 8px;
+    background-color:  var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);;
+}
+.logo{
+    padding-left: 5vw;
+    width: 70%;
+    font-size: 3rem;
+    color: var(--logo-color);
+    cursor: pointer;
+}
+.navIcon{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 3vw;
+    list-style-type: none;
+    color: white;
+   
+}
+.navIcon li{
+    cursor: pointer;
+}
+.navIcon li:hover{
+    transition: color 0.5s ease;
+    color: blueviolet;
+}
+.hamburger{
+    display: none;
+    font-size: 5vw;
+    user-select: none;
+    color: white;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .navIcon {
+        justify-content: flex-end;
+    }
+    .navIcon li{
+        display:none;
+    }
+    .hamburger {
+        display: flex;
+        padding-right: 4vw;
+        color: white;
+    }    
+}
+
+.sideNav{
+    position:fixed;
+    right: 0%;
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(to bottom , #FFF84F , #FBF8BD);
+    transition: right 0.5s ease;
+}
+.showSideNav{
+    right: 0%;
+  
+}
+.sideNav li{    
+    list-style-type: none;
+    font-size: 4vw;
+    color: var(--logo-color);
+    font-weight: 500;
+    padding: 2vh;
+}
