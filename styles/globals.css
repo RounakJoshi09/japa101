@@ -1,8 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root{
-    --primary-color:#FAE101;
+    --primary-color : #eb1c05;
     --logo-color:#FF650E;
     font-family: 'Lato', sans-serif;
 }
 body{
     margin: 0;
+    box-sizing: border-box;
+    background-attachment: fixed;
 }

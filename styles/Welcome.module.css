@@ -1,4 +1,32 @@
 .welcome{
     width: 100%;
-    height: 30vw;
+    text-align: center;
+    height: 10%;
+}
+.heading{
+    color: var(--primary-color);
+    font-family: 'Lato', sans-serif;
+}
+.topLine{
+    padding: 0px;
+    height: 0.125rem;
+    background-color: var(--primary-color);
+}
+.navigationText{
+    color: var(--logo-color);
+}
+.glassBackground{
+    background: inherit;
+    height: 100%;
+    width: 100%;
+}
+.glassBackground:before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(235, 68, 68, 0.5);
+    filter: blur(10px);
 }

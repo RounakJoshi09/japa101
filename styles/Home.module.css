@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: linear-gradient(to right , #FBF8BD,#FFF84F);
+  background: white;
   width: 100%;
   height: 100vh;
 }
