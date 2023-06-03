@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Component, useRef, useEffect ,useRouter } from 'react';
+import { Component, useRef, useEffect, useRouter } from 'react';
 import styles from '@/styles/Welcome.module.css';
 import Image from 'next/image';
 import { gsap } from 'gsap';
@@ -51,11 +51,8 @@ const Welcome = () => {
             <p className={`font-size-2xl font-bold text-red`}>Japa101</p>
           </div>
         </div>
-        <button className={`${styles.getStartedButton}`}>
-  Let's Get Started
-</button>
-        </div>
-      
+        <button className={`${styles.getStartedButton}`}>Let's Get Started</button>
+      </div>
     </>
   );
 };
