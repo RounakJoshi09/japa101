@@ -1,9 +1,12 @@
 import { db } from "@/helpers/api/db";
 import jwtMiddleware from "./jwt-middleware";
-
+import { errorHandler } from "./error-handler";
+export {apiHandler}; 
 const apiHandler = (handler) => {
   return async (req, res) => {
-    const method = req.method.toLowercase();
+    console.log(req.method);
+    let method =  req.method.toString();
+    method = method.toLowerCase();
     if (!handler[method]) {
       return res.status(405).send(`Method ${req.method} not allowed`);
     }
@@ -13,12 +16,12 @@ const apiHandler = (handler) => {
             await db.initialize();
         }
 
-        await jwtMiddleware(req,res);
+         await jwtMiddleware(req,res);
 
         await handler[method](req, res);
 
     } catch (e) {
-      res.status(500).send(e);
+        return errorHandler(e,res);
     }
   };
 };
