@@ -1,11 +1,9 @@
 import getConfig from 'next/config';
 import mysql from 'mysql2/promise';
 import { Sequelize } from 'sequelize';
-import isIn from './../../node_modules/validator/es/lib/isIn';
 
 const { serverRuntimeConfig } = getConfig();
-
-
+import { createUserModel } from "@/models/users";
 
 const initialize = async () => {
   const { database, host, port, user, password } = serverRuntimeConfig.dbConfig;
@@ -24,14 +22,9 @@ const initialize = async () => {
     host,
   });
 
-  try {
-    await sequelize.authenticate();
+    db.User =  createUserModel(sequelize);
+    sequelize.sync({alter:true});
     db.isInitialized = true;
-    console.log('Connection has been established successfully.');   
-  } catch (error) {
-    console.error('Unable to connect to the database:', error); 
-  }
-
 
 };
 

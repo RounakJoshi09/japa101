@@ -1,9 +1,10 @@
-import { db } from "@/helpers/api/db";
+import  {userController } from "@/controllers/users";
 
-export default function handler(req, res) {
+export default async function handler(req, res)  {
     if (req.method === 'POST') {
-        db.initialize();
-        res.status(200).json({ name: 'John Doe' }); 
+        console.log(req.body);
+        const user = await userController.create(req.body); 
+        res.status(200).json(user); 
     } else {
    
     }
