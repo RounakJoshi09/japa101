@@ -1,16 +1,36 @@
+import { useState } from 'react';
 /* eslint-disable react/no-unescaped-entities */
 import { Component, useRef, useEffect, useRouter } from 'react';
 import styles from '@/styles/Welcome.module.css';
 import Image from 'next/image';
 import { gsap } from 'gsap';
+import { GoogleLogin } from '@react-oauth/google';
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 
 const Welcome = () => {
   const welcomeTextRef = useRef(null);
+  const [ user, setUser ] = useState([]);
+    const [ profile, setProfile ] = useState([]);
+  
+  const successHandler = ( response ) => {
+    console.log('Login Success:', response);  
+    
+  }
 
-  const handleClick = () => {
-    // router.push('/about');
-    console.log('Clicked');
-  };
+  const failureHandler = ( err ) => { 
+    console.log('Login Failed:', error)
+    console.log(err); 
+  }
+
+  // const login = useGoogleLogin({
+  //       onSuccess: {successHandler} ,
+  //       onError: {failureHandler}
+  //   });
+    const logOut = () => {
+        googleLogout();
+        setProfile(null);
+    };
+
   useEffect(() => {
     gsap.fromTo(
       welcomeTextRef.current,
@@ -34,25 +54,34 @@ const Welcome = () => {
         <p className='text-2xl lg:text-4xl font-bold cursor-pointer'>Home</p>
         <p className='text-2xl lg:text-4xl font-bold cursor-pointer'>About</p>
       </div>
-      <div className={`${styles.glassBackground}`}>
-        <div className={`${styles.welcomeBox} d-flex flex-row justify-center items-center`}>
-          <Image
-            src='/beads.jpg'
-            height={250}
-            width={250}
-            className={`rounded-full overflow-hidden  ml-10 sm:h-15 sm:w-15 md:h-30 md:w-30 lg:h-40 lg:w-40 xl:h-60 xl:w-60`}
-            alt='japa beads'
-          />
-          <div
-            ref={welcomeTextRef}
-            className={`ml-10 mr-10 xs:text-4xl md:text-4xl lg:text-6xl xl:text-8xl font-bold`}
-          >
-            <p className={`font-size-2xl font-bold text-red`}>Welcome to</p>
-            <p className={`font-size-2xl font-bold text-red`}>Japa101</p>
-          </div>
+
+      <div className={`${styles.welcomeBox} d-flex flex-row justify-center items-center`}>
+        <Image
+          src='/beads.jpg'
+          height={250}
+          width={250}
+          className={`rounded-full overflow-hidden  ml-10 sm:h-15 sm:w-15 md:h-30 md:w-30 lg:h-40 lg:w-40 xl:h-60 xl:w-60`}
+          alt='japa beads'
+        />
+        <div
+          ref={welcomeTextRef}
+          className={`ml-10 mr-10 xs:text-4xl md:text-4xl lg:text-6xl xl:text-8xl font-bold`}
+        >
+          <p className={`font-size-2xl font-bold text-red`}>Welcome to</p>
+          <p className={`font-size-2xl font-bold text-red`}>Japa101</p>
         </div>
-        <button className={`${styles.getStartedButton}`}>Let's Get Started</button>
       </div>
+      {/* <div  onClick={login} className={`${styles.getStartedButton}`}>
+          Let's Get Started
+        </div> */}
+      <div className={`${styles.googleLoginButton} d-flex justify-center items-center`}>
+        <GoogleLogin
+          onSuccess={successHandler}
+          onError={failureHandler}
+        />
+      </div>
+      {/* <GoogleLogin onSuccess={successHandler} onError={failureHandler} /> */}
+      <div className={`${styles.glassBackground}`}></div>
     </>
   );
 };

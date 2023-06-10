@@ -11,7 +11,7 @@ const nextConfig = {
       user:'root',
       password:'123456',
     },
-    secret: 'XXXXXX'
+    secret: 'haribol'
   }
 
 }
