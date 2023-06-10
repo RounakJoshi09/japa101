@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { gsap } from 'gsap';
 import { GoogleLogin } from '@react-oauth/google';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+import {url} from '../helpers/route';
+import Cookies from 'js-cookie';
 
 const Welcome = () => {
   const welcomeTextRef = useRef(null);
@@ -13,8 +16,20 @@ const Welcome = () => {
     const [ profile, setProfile ] = useState([]);
   
   const successHandler = ( response ) => {
-    console.log('Login Success:', response);  
-    
+
+    const user = axios.post(`${url.BASE_URL}${url.signup}`,response);
+    user.then((response)=>{
+      const user = response.data.user;
+      const token = response.data.token;
+      Cookies.set('authToken',token);
+      console.log(user);
+      console.log(token);
+
+    }).
+    catch((err)=>{
+      console.log(err);
+    })
+
   }
 
   const failureHandler = ( err ) => { 
