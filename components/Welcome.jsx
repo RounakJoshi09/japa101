@@ -19,7 +19,6 @@ const Welcome = () => {
   const welcomeTextRef = useRef(null);
   // const [user, setUser] = useState(null);
   const { user } = useSelector((state)=>state.user);
-  const router  = useRouter();
   const dispatch = useDispatch();
   const successHandler = (response) => {
     const user = axios.post(`${url.BASE_URL}${url.signup}`, response);
@@ -67,15 +66,6 @@ console.log(user,'User');
   return (
     <>
       <div>
-        <div
-          className={`${styles.navigationText} flex flex-col lg:flex-row gap-5 lg:gap-20 justify-center text-center p-2  `}
-        >
-          <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>Home</p>
-          <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>About</p>
-          <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>Record</p>
-          <p onClick={()=>logOut()} className={`${styles.navigationTextLogout} text-2xl lg:text-4xl font-bold cursor-pointer`}>Logout</p>  
-        </div>
-      
         <div className='d-flex flex-column justify-center items-center'>
           <div className={`${styles.welcomeBox} d-flex flex-row justify-center items-center`}>
             <Image

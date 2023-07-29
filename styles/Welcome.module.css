@@ -12,16 +12,6 @@
     height: 0.125rem;
     background-color: var(--primary-color);
 }
-.navigationText{
-    color: var(--logo-color);
-    cursor: pointer;
-}
-.navigationTextHome:hover{
-    color: var(--hover-text);
-}
-.navigationTextLogout:hover{
-    color: var(--primary-color);
-}
 .glassBackground{
     background-image: url('/hi_background_2.jpg');
     height: 100%;

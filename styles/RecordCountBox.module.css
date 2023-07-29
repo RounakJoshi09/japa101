@@ -1,0 +1,46 @@
+.boxWrapper{
+    width: 15rem;
+    height: 17rem;
+    border-radius: 15%;
+    background-color: #5fa7c7;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+}
+.roundCountText{
+    font-size: 4rem;
+    color: white;
+    font-weight: 600;
+    height: 5rem;
+}
+@keyframes animateNumber {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+.roundText{
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+    
+}
+.durationTextStyle{
+    font-size: 2rem;
+    color: white;
+    font-weight: 600;
+}
+.nameCountText{
+    font-size: 1rem;
+    color: white;
+    font-weight: 400;
+    font-style: italic;
+    width: 9rem;
+    text-align: center;
+
+}

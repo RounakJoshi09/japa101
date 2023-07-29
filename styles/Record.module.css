@@ -1,0 +1,28 @@
+.mahamantraContainer{
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100vw;
+    height: 6rem;
+    text-align: center; /* Horizontally center the text within the div */
+}
+.mahamantraText{
+    position: absolute;
+    top: 50%; 
+    left: 0; 
+    bottom: 1rem;
+    transform: translateX(100%); 
+    animation: moveRight 60s linear infinite; 
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    font-style: italic;
+}
+@keyframes moveRight {
+    0% {
+      transform: translateX(100%); /* Start position off-screen to the left */
+    }
+    100% {
+      transform: translateX(-100%); /* End position off-screen to the right */
+    }
+}
