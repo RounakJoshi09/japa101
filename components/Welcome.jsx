@@ -15,7 +15,7 @@ import { fetchUser } from '@/services/userService';
 
 const Welcome = () => {
   const welcomeTextRef = useRef(null);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   const successHandler = (response) => {
     const user = axios.post(`${url.BASE_URL}${url.signup}`, response);
@@ -52,21 +52,12 @@ const Welcome = () => {
 
   useEffect(() => {
     const authToken = Cookies.get('authToken');
-    console.log(authToken);
     if (authToken) {
-      const user = fetchUser();
-      user
-        .then((response) => {
-          console.log(response, 'user');
-          setUser(response);
-        })
-        .catch((err) => {
-          console.log(err);
-          setUser({});
-        });
-    }
-    console.log(user);
-  }, [user]);
+       fetchUser(setUser);
+    }    
+
+  }, []);
+
 
   return (
     <>
@@ -74,10 +65,11 @@ const Welcome = () => {
         <div
           className={`${styles.navigationText} flex flex-col lg:flex-row gap-5 lg:gap-20 justify-center text-center p-2  `}
         >
-          <p className='text-2xl lg:text-4xl font-bold cursor-pointer'>Home</p>
-          <p className='text-2xl lg:text-4xl font-bold cursor-pointer'>About</p>
+          <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>Home</p>
+          <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>About</p>
+          <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>Record</p>
         </div>
-
+      
         <div className='d-flex flex-column justify-center items-center'>
           <div className={`${styles.welcomeBox} d-flex flex-row justify-center items-center`}>
             <Image
@@ -96,9 +88,21 @@ const Welcome = () => {
               <p className={`font-bold text-white pt-0`}> Japa101</p>
             </div>
           </div>
-          <div className={`${styles.googleLoginButton} d-flex justify-center items-center`}>
+          
+          { (!user || Object.keys(user).length === 0) ?  (<div className={`${styles.googleLoginButton} d-flex justify-center items-center`}>
             <GoogleLogin onSuccess={successHandler} onError={failureHandler} />
+          </div>) : null}
+
+          <div className={`${styles.chatHareKrsna}`}>
+            <p className='p-0 m-0'>Chant Hare Krsna, Be Happy</p>
           </div>
+
+          <div className={`${styles.mahamantraContainer}`}>
+              <p className={`${styles.mahamantraText} p-0 m-0`} >
+                Hare Krsna Hare Krsna , Krsna Krsna Hare Hare , Hare Rama Hare Rama , Rama Rama Hare Hare
+              </p>
+          </div>
+
         </div>
       </div>
     </>

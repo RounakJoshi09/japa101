@@ -5,6 +5,7 @@
 :root{
     --primary-color : #eb1c05;
     --logo-color: #eeecec;
+    --hover-text: #FF7722;
     font-family: 'Lato', sans-serif;
 }
 body{
