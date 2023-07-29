@@ -22,12 +22,6 @@
     width: 100%;
     pointer-events: none;
 }
-.background{
-    background-image: url('/hi_background_2.jpg');
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
-}
 .glassBackground:before {
     content: '';
     position: absolute;
@@ -46,7 +40,15 @@
     align-items: center;
     gap: 15%;
     margin: 2rem;
+
+    @media (max-width:700px) {
+        flex-direction: column;
+    }
 }
+
+
+
+
 .getStartedButton{
 
     width: 15vw;
@@ -81,13 +83,23 @@
     } 
 }
 .googleLoginButton{
-    padding-left: 40%;
-
+        padding-left: 40%;
+        padding-right: 50%;
+        cursor: pointer;
+        @media (max-width:700px) {
+                padding-left: 40%;
+                padding-right: 50%; 
+        }
+        @media (max-width:500px) {
+            padding-left: 30%; 
+            }
 }
-@media (max-width:700px) {
-    .googleLoginButton{
+.welcomeText{
+    font-size: 4rem;
+    
+    @media (max-width:700px) {
+        font-size: 3rem;    
+}
         
-        padding-left: 20%;
-        
-    } 
+    font: bold;
 }

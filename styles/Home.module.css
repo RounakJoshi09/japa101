@@ -1,8 +1,14 @@
-.main {
+/* .main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background: white;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-}
+  pointer-events: none;
+  background-image: url('/hi_background_2.jpg');
+  pointer-events: none;
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+} */

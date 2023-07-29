@@ -66,15 +66,11 @@ const Welcome = () => {
         });
     }
     console.log(user);
-  }, []);
+  }, [user]);
 
   return (
     <>
-      {/* <div className={styles.welcome}>
-        <h1 className={`text-3xl lg:text-6xl font-bold ${styles.heading}`}>Japa101</h1>
-      </div> */}
-      <div className={`${styles.background}`}>
-        {/* <div className={` ${styles.topLine} mt-3 mb-3 bg-red`} /> */}
+      <div>
         <div
           className={`${styles.navigationText} flex flex-col lg:flex-row gap-5 lg:gap-20 justify-center text-center p-2  `}
         >
@@ -82,30 +78,28 @@ const Welcome = () => {
           <p className='text-2xl lg:text-4xl font-bold cursor-pointer'>About</p>
         </div>
 
-        <div className={`${styles.welcomeBox} d-flex flex-row justify-center items-center`}>
-          <Image
-            src='/person_chanting.jpg'
-            height={250}
-            width={250}
-            className={`rounded-full overflow-hidden  ml-10 sm:h-15 sm:w-15 md:h-30 md:w-30 lg:h-40 lg:w-40 xl:h-60 xl:w-60`}
-            alt='japa beads'
-          />
-          <div
-            ref={welcomeTextRef}
-            className={`ml-10 mr-10 xs:text-4xl md:text-4xl lg:text-6xl xl:text-8xl font-bold`}
-          >
-            <p className={`font-size-2xl font-bold text-white`}>Welcome to</p>
-            <p className={`font-size-2xl font-bold text-white`}> Japa101</p>
+        <div className='d-flex flex-column justify-center items-center'>
+          <div className={`${styles.welcomeBox} d-flex flex-row justify-center items-center`}>
+            <Image
+              src='/person_chanting.jpg'
+              height={500}
+              width={500}
+              className={`rounded-full overflow-hidden  ml-10 sm:h-40 sm:w-40 md:h-60 md:w-60 lg:h-60 lg:w-60 xl:h-60 xl:w-60`}
+              alt='japa beads'
+            />
+            <div
+              ref={welcomeTextRef}
+              className={`${styles.welcomeText} ml-10 mr-10 mt-10 font-bold`}
+            >
+              <p className={`font-bold text-white pb-0`}>Welcome </p>
+              <p className={`font-bold text-white pt-0 pb-0 pl-20`}>to</p>
+              <p className={`font-bold text-white pt-0`}> Japa101</p>
+            </div>
+          </div>
+          <div className={`${styles.googleLoginButton} d-flex justify-center items-center`}>
+            <GoogleLogin onSuccess={successHandler} onError={failureHandler} />
           </div>
         </div>
-        {/* <div  onClick={login} className={`${styles.getStartedButton}`}>
-          Let's Get Started
-        </div> */}
-        <div className={`${styles.googleLoginButton} d-flex justify-center items-center`}>
-          <GoogleLogin onSuccess={successHandler} onError={failureHandler} />
-        </div>
-        {/* <GoogleLogin onSuccess={successHandler} onError={failureHandler} /> */}
-        {/* <div className={`${styles.glassBackground}`}></div> */}
       </div>
     </>
   );
