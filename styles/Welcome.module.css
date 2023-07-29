@@ -17,7 +17,13 @@
     cursor: pointer;
 }
 .glassBackground{
-    background: inherit;
+    background-image: url('/hi_background_2.jpg');
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+.background{
+    background-image: url('/hi_background_2.jpg');
     height: 100%;
     width: 100%;
     pointer-events: none;

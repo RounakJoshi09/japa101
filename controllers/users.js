@@ -39,8 +39,26 @@ const findOrCreate = async (params) =>{
     return user;
 
 }
+const find= async (id) =>{
+    
+    if (!db.isInitialized)
+    await db.initialize();
+    
+    let user = await db.User.findOne({ where: { id: id } })
+    if(user)
+    { 
+       return user;
+    }
+    else{
+     return {};
+    }
+
+    
+
+}
 
 export const userController = {
     create,
-    findOrCreate
+    findOrCreate,
+    find
 }
