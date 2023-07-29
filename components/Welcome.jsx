@@ -1,6 +1,6 @@
 import { useState } from 'react';
 /* eslint-disable react/no-unescaped-entities */
-import { Component, useRef, useEffect, useRouter } from 'react';
+import { Component, useRef, useEffect } from 'react';
 import styles from '@/styles/Welcome.module.css';
 import Image from 'next/image';
 import { gsap } from 'gsap';
@@ -11,12 +11,16 @@ import { url } from '../helpers/route';
 import Cookies from 'js-cookie';
 import { cookies } from 'next/dist/client/components/headers';
 import api from '@/helpers/fetchWrapper';
-import { fetchUser } from '@/services/userService';
+import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser, setUser } from '@/redux/user/action';
 
 const Welcome = () => {
   const welcomeTextRef = useRef(null);
-  const [user, setUser] = useState(null);
-
+  // const [user, setUser] = useState(null);
+  const { user } = useSelector((state)=>state.user);
+  const router  = useRouter();
+  const dispatch = useDispatch();
   const successHandler = (response) => {
     const user = axios.post(`${url.BASE_URL}${url.signup}`, response);
     user
@@ -24,6 +28,7 @@ const Welcome = () => {
         const user = response.data.user;
         const token = response.data.token;
         Cookies.set('authToken', token);
+        dispatch(setUser(user));
       })
       .catch((err) => {
         console.log(err);
@@ -36,7 +41,8 @@ const Welcome = () => {
   };
   const logOut = () => {
     googleLogout();
-    setProfile(null);
+    Cookies.remove('authToken');  
+    dispatch(setUser({}));
   };
 
   useEffect(() => {
@@ -51,14 +57,13 @@ const Welcome = () => {
   }, [welcomeTextRef]);
 
   useEffect(() => {
-    const authToken = Cookies.get('authToken');
-    if (authToken) {
-       fetchUser(setUser);
-    }    
+    if(!user)
+    {
+      dispatch(fetchUser());
+    }
+  }, [dispatch, user]);
 
-  }, []);
-
-
+console.log(user,'User');
   return (
     <>
       <div>
@@ -68,6 +73,7 @@ const Welcome = () => {
           <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>Home</p>
           <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>About</p>
           <p className={`${styles.navigationTextHome} text-2xl lg:text-4xl font-bold cursor-pointer`}>Record</p>
+          <p onClick={()=>logOut()} className={`${styles.navigationTextLogout} text-2xl lg:text-4xl font-bold cursor-pointer`}>Logout</p>  
         </div>
       
         <div className='d-flex flex-column justify-center items-center'>

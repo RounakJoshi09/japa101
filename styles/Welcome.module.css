@@ -19,6 +19,9 @@
 .navigationTextHome:hover{
     color: var(--hover-text);
 }
+.navigationTextLogout:hover{
+    color: var(--primary-color);
+}
 .glassBackground{
     background-image: url('/hi_background_2.jpg');
     height: 100%;
@@ -48,10 +51,6 @@
         flex-direction: column;
     }
 }
-
-
-
-
 .getStartedButton{
 
     width: 15vw;
@@ -107,6 +106,7 @@
     font: bold;
 }
 .chatHareKrsna{
+    padding: 0.5rem;
     font-size: 2rem;
     font-style: italic;
     color: white;
