@@ -11,6 +11,7 @@ import { url } from '../helpers/route';
 import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, setUser } from '@/redux/user/action';
+import NavigationBar from './NavigationBar';
 
 const Welcome = () => {
   const welcomeTextRef = useRef(null);
@@ -58,6 +59,7 @@ const Welcome = () => {
 console.log(user,'User');
   return (
     <>
+    <NavigationBar />
       <div>
         <div className='d-flex flex-column justify-center items-center'>
           <div className={`${styles.welcomeBox} d-flex flex-row justify-center items-center`}>

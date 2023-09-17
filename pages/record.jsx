@@ -1,11 +1,17 @@
 import Head from 'next/head';
 import RecordCountBox from './../components/RecordCountBox';
 import styles from '@/styles/Record.module.css';
+import NavigationBar from '@/components/NavigationBar';
+import { useState } from 'react';
+import JapaRecordModal from './../components/JapaRecordModal';
 export default function Home() {
+  const [modal,setModal] = useState(false);
+
   return (
     <>
+        <NavigationBar />
         <div className='mt-10 flex items-center justify-center'>
-        <button className="align-center bg-white hover:bg-blue-700 text-blue-700 hover:text-white text-xl font-bold py-2 px-4 rounded opacity-95">
+        <button onClick={() => setModal(true)} className="align-center bg-white  text-blue-700 text-xl font-bold py-2 px-4 rounded opacity-95">
         Add Chanting Record
         </button>
         </div>
@@ -20,6 +26,7 @@ export default function Home() {
               <p className={`${styles.mahamantraText} p-0 m-0`} >
               Sixteen rounds is a vow. {'I must chant sixteen rounds.'} Out of the material energy, I think it is impossible. But spiritual energy, there is no question of impossible. It is all possible. Therefore we have to increase the spiritual energy. That is Krsna consciousness movement. :- Srila Prabhupad        </p>
         </div>    
+        <JapaRecordModal isOpen={modal} setIsOpen={setModal} />
     </>
   );
 }
