@@ -9,9 +9,6 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { url } from '../helpers/route';
 import Cookies from 'js-cookie';
-import { cookies } from 'next/dist/client/components/headers';
-import api from '@/helpers/fetchWrapper';
-import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, setUser } from '@/redux/user/action';
 
@@ -38,11 +35,7 @@ const Welcome = () => {
     console.log('Login Failed:', error);
     console.log(err);
   };
-  const logOut = () => {
-    googleLogout();
-    Cookies.remove('authToken');  
-    dispatch(setUser({}));
-  };
+  
 
   useEffect(() => {
     gsap.fromTo(
